@@ -31,19 +31,22 @@ class ShowHideTech extends Component {
   render() {
 
     let techlistStatusClass
+    let messageForButton
 
     if (this.state.techShowing === true) {
       techlistStatusClass = `techlist--hidden`
+      messageForButton = "+ Show Tech"
     }
 
     else {
-      techlistStatusClass = ''
+      techlistStatusClass = '- Hide Tech'
+      messageForButton = "- Hide Tech"
     }
 
     return (
       <section>
         <h4>Technologies</h4>
-        <button onClick={ ()=>{this._toggleShowTech() } } >+ Show Tech</button>
+        <button onClick={ ()=>{this._toggleShowTech() } } >{messageForButton}</button>
 
         <div className={`techlist ${techlistStatusClass}`}>
           <span className="techlist__icon devicons devicons-github_badge"/>

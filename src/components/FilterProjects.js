@@ -73,26 +73,36 @@ constructor(uno){
   }
 
   render() {
-    let selectedTypeProjClass = ''
-    if (this.state.whichProjShow === 'solo' ) {
-      selectedTypeProjClass = "project-type--selected"
-    } else {
-      selectedTypeProjClass = ""
+    let selectedAllClass
+    let selectedSoloClass
+    let selectedTeamClass
+
+    if (this.state.whichProjShow === 'all' ) {
+      selectedAllClass = "project-type--selected"
     }
+
+    if (this.state.whichProjShow === 'solo' ) {
+      selectedSoloClass = "project-type--selected"
+    }
+
+    if (this.state.whichProjShow === 'team' ) {
+      selectedTeamClass = "project-type--selected"
+    }
+
     return (
       <section>
           <h4>Projects</h4>
 
           <div className="project-types-list">
-            <span data-ptype="all" className='project-type project-type--all' onClick={ ()=>{ this._updateStateClick('all') } }>
+            <span data-ptype="all" className={`project-type project-type--all ${selectedAllClass}`} onClick={ ()=>{ this._updateStateClick('all') } }>
               All
             </span>
 
-            <span data-ptype="solo" className='project-type project-type--solo' onClick={ ()=>{ this._updateStateClick('solo') } }>
+            <span data-ptype="solo" className={`project-type project-type--solo ${selectedSoloClass}`} onClick={ ()=>{ this._updateStateClick('solo') } }>
               <i className="ion-person"></i>Solo
             </span>
 
-            <span data-ptype="team" className= 'project-type project-type--team' onClick={ ()=>{ this._updateStateClick('team') } }>
+            <span data-ptype="team" className= {`project-type project-type--team ${selectedTeamClass}`} onClick={ ()=>{ this._updateStateClick('team') } }>
               <i className="ion-person-stalker"></i>Team
             </span>
           </div>
